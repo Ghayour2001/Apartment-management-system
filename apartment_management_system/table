@@ -1,0 +1,22 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+  $("#floor").on("change", function() {
+    var floor_no = $(this).val();
+    if (floor_no != "") {
+      $.ajax({
+        url: "get_units.php",
+        type: "POST",
+        data: { woner_floor_id: floor_no },
+        success: function(data) {
+          $("#unit").html(data);
+          $("#unit").trigger("change"); // Trigger change event manually
+        }
+      });
+    } else {
+      $("#unit").html("<option value=''>Select a unit</option>");s
+    }
+  });
+
+});
+
+</script>
